@@ -15,9 +15,9 @@ Future versions of the app will: remove duplication through code refactoring; li
 
 ## Screenshots
 
-<img src="mobile.jpg" width="400px">
-<img src="tablet.jpg" width="400px">
-<img src="desktop.jpg" width="250px">
+<img src="mobile.jpg" width="200px">
+<img src="tablet.jpg" width="300px">
+<img src="desktop.jpg" width="400px">
 
 
 
