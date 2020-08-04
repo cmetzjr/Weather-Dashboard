@@ -117,15 +117,10 @@ $(document).ready(function () {
     $(document).on("click", ".list-group-item", function (event) {
         event.preventDefault();
         // console.log("run");
-
-
-
-
         var newsearchField = $(this).text();//city they searched for
         // console.log(newsearchField);
-
         //API call for the forecast data
-        var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + newsearchField + "&appid=7a10d06f7cb08f419c846031b7cae29a&units=imperial";
+        var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + newsearchField + "&appid=7a10d06f7cb08f419c846031b7cae29a&units=imperial";
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -133,7 +128,7 @@ $(document).ready(function () {
             // console.log(response.list[4]);
             for (i = 4; i < response.list.length; i = i + 8) {
                 $("#forecastDate" + [i]).html(moment(response.list[i].dt_txt).format("l"));
-                $("#forecastIcon" + [i]).attr("src", "http://openweathermap.org/img/wn/" + response.list[i].weather[0].icon + ".png");
+                $("#forecastIcon" + [i]).attr("src", "https://openweathermap.org/img/wn/" + response.list[i].weather[0].icon + ".png");
                 $("#forecastTempF" + [i]).html(Math.round(response.list[i].main.temp) + " &deg;F");
                 $("#forecastHumidity" + [i]).html(response.list[i].main.humidity + "%");
             }
@@ -141,13 +136,13 @@ $(document).ready(function () {
 
         //API call for the current weather data
         // var newsearchField = $("#searchField").val().trim();//city they searched for
-        var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + newsearchField + "&appid=7a10d06f7cb08f419c846031b7cae29a&units=imperial";
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + newsearchField + "&appid=7a10d06f7cb08f419c846031b7cae29a&units=imperial";
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
             console.log(response);
-            $("#currentWeatherIcon").attr("src", "http://openweathermap.org/img/wn/" + response.weather[0].icon + ".png");
+            $("#currentWeatherIcon").attr("src", "https://openweathermap.org/img/wn/" + response.weather[0].icon + ".png");
             $("#currentCity").html(capitalize(newsearchField) + " (" + today + ")");
             $("#cityHumidity").html(response.main.humidity + "%");
             $("#cityTempF").html(Math.round(response.main.temp) + " &deg;F");
@@ -155,7 +150,7 @@ $(document).ready(function () {
             var lon = response.coord.lon;
             var lat = response.coord.lat;
             //need to use lat & lon to get UV Index
-            var queryURL2 = "http://api.openweathermap.org/data/2.5/uvi?appid=7a10d06f7cb08f419c846031b7cae29a&lat=" + lat + "&lon=" + lon;
+            var queryURL2 = "https://api.openweathermap.org/data/2.5/uvi?appid=7a10d06f7cb08f419c846031b7cae29a&lat=" + lat + "&lon=" + lon;
             $.ajax({
                 url: queryURL2,
                 method: "GET"
