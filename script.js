@@ -27,7 +27,7 @@ $(document).ready(function () {
         cityList.empty();
         for (i = 0; i < searchHist.length; i++) {
             var searchFieldListItem = $("<li>").text(searchHist[i]).attr("type", "button").addClass("list-group-item city");
-            $("#cityList").append(searchFieldListItem);
+            $("#cityList").prepend(searchFieldListItem);
         };
     };
 
